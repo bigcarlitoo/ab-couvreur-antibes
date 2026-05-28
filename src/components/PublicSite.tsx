@@ -763,22 +763,15 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {realisations.slice(0, 6).map((r, idx) => (
-              <div key={r.id} className={`group rounded-[1.5rem] overflow-hidden bg-[var(--color-mist-2)] border border-[var(--color-ink)]/8 card-lift ${idx === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
-                <div className={`relative overflow-hidden ${idx === 0 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {realisations.slice(0, 6).map((r) => (
+              <div key={r.id} className="group rounded-[1.5rem] overflow-hidden bg-[var(--color-mist-2)] border border-[var(--color-ink)]/8 card-lift flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/3]">
                   <img src={r.image} alt={r.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute top-3 left-3 chip bg-[var(--color-mist)] text-[var(--color-ink)] shadow-sm">
-                    <MapPin size={11} className="text-[var(--color-coral)]" /> {r.city}
-                  </div>
                 </div>
-                <div className="p-5">
-                  <h3 className="font-display font-semibold text-lg text-[var(--color-ink)] leading-snug mb-2">{r.title}</h3>
-                  <p className="text-sm text-[var(--color-ink)]/65 leading-relaxed line-clamp-2">{r.description}</p>
-                  <div className="mt-4 pt-4 border-t border-[var(--color-ink)]/8 flex justify-between text-xs">
-                    <span className="text-[var(--color-coral)] font-medium">{r.roofType}</span>
-                    <span className="text-[var(--color-ink)]/55">{r.duration}</span>
-                  </div>
+                <div className="p-5 flex-1 flex flex-col">
+                  <h3 className="font-display font-semibold text-base text-[var(--color-ink)] leading-snug mb-2">{r.title}</h3>
+                  <p className="text-sm text-[var(--color-ink)]/65 leading-relaxed line-clamp-3">{r.description}</p>
                 </div>
               </div>
             ))}
@@ -1269,38 +1262,23 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
 
       <section className="py-16 lg:py-24 bg-[var(--color-mist)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-            {realisations.map((r, idx) => {
-              const tall = idx % 5 === 0 || idx % 5 === 3;
-              return (
-                <button
-                  key={r.id}
-                  onClick={() => {
-                    const linked = services.find((s) => s.id === r.serviceId);
-                    if (linked) openService(linked);
-                  }}
-                  className="group relative overflow-hidden rounded-[1.5rem] bg-[var(--color-ink)] text-left card-lift"
-                  style={{ minHeight: tall ? 460 : 360 }}
-                >
-                  <img src={r.image} alt={r.title} className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)] via-[var(--color-ink)]/35 to-transparent" />
-                  <div className="relative h-full flex flex-col justify-between p-5 text-[var(--color-mist)]" style={{ minHeight: tall ? 460 : 360 }}>
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="chip bg-[var(--color-mist)]/95 text-[var(--color-ink)]">
-                        <MapPin size={11} className="text-[var(--color-coral)]" /> {r.city}
-                      </div>
-                      <div className="chip bg-[var(--color-coral)] text-[var(--color-mist)]">{r.duration}</div>
-                    </div>
-                    <div>
-                      <div className="text-xs text-[var(--color-coral-hi)] font-semibold uppercase tracking-wider mb-1">{r.roofType}</div>
-                      <h3 className="font-display font-bold text-xl sm:text-2xl leading-tight mb-2">{r.title}</h3>
-                      <p className="text-sm text-[var(--color-mist)]/80 leading-relaxed line-clamp-2">{r.description}</p>
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {realisations.map((r) => (
+              <figure key={r.id} className="group rounded-[1.5rem] overflow-hidden bg-[var(--color-mist-2)] border border-[var(--color-ink)]/8 card-lift flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img src={r.image} alt={r.title} className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700" />
+                </div>
+                <figcaption className="p-5 flex-1">
+                  <h3 className="font-display font-semibold text-base text-[var(--color-ink)] leading-snug mb-2">{r.title}</h3>
+                  <p className="text-sm text-[var(--color-ink)]/65 leading-relaxed">{r.description}</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
+          <p className="mt-10 text-sm text-[var(--color-ink)]/55 text-center max-w-2xl mx-auto leading-relaxed">
+            Une sélection de photos prises sur nos chantiers. Couverture, zinguerie, charpente, Velux, isolation,
+            nettoyage — autant de prestations réalisées chez nos clients dans le bassin antibois et sur la Côte d'Azur.
+          </p>
         </div>
       </section>
 

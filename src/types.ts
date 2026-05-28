@@ -29,17 +29,8 @@ export interface Zone {
 export interface Realisation {
   id: string;
   title: string;
-  city: string;
   description: string;
-  roofType: string;
   image: string;
-  duration: string;
-  serviceId: string;
-  clientReview?: {
-    author: string;
-    rating: number;
-    comment: string;
-  };
 }
 
 export interface Testimonial {

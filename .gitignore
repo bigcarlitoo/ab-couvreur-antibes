@@ -24,3 +24,5 @@ payload.db
 tsconfig.tsbuildinfo
 *-check.png
 *-check-*.png
+
+.vercel
