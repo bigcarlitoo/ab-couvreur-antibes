@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.env
+.env.*
+payload.db
+public/uploads
+.vercel
+.claude
+.chrome-cdp-menu
+.chrome-cdp-mobile
+.chrome-mobile-profile*
+tsconfig.tsbuildinfo
+*-check.png
+*-check-*.png
+metadata.json
+assets

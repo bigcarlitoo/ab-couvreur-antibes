@@ -1,0 +1,49 @@
+{
+  "name": "ab-couvreur-antibes-v2-payload",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --hostname 127.0.0.1 --port 3002",
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start --hostname 127.0.0.1 --port 3002",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@payloadcms/db-sqlite": "3.85.0",
+    "@payloadcms/next": "3.85.0",
+    "@payloadcms/richtext-lexical": "3.85.0",
+    "@payloadcms/ui": "3.85.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "cross-env": "10.1.0",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "graphql": "^16.8.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "next": "15.4.11",
+    "payload": "3.85.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "resend": "^6.12.4",
+    "sharp": "0.34.2",
+    "vite": "^6.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+  }
+}

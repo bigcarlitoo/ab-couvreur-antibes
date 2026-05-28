@@ -1,0 +1,26 @@
+node_modules/
+build/
+dist/
+.next/
+coverage/
+.DS_Store
+*.log
+
+# Env (never commit)
+.env*
+!.env.example
+
+# Local DB (Payload sqlite — never on Vercel)
+payload.db
+
+# Vercel link
+.vercel
+
+# Local dev artifacts
+.claude/
+.chrome-cdp-menu/
+.chrome-cdp-mobile/
+.chrome-mobile-profile*/
+tsconfig.tsbuildinfo
+*-check.png
+*-check-*.png

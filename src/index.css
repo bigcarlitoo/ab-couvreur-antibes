@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #0c1623;
+  --color-ink-2: #142235;
+  --color-ink-3: #1d2f47;
+  --color-coral: #ff4d36;
+  --color-coral-hi: #ff6e5a;
+  --color-coral-lo: #d23a25;
+  --color-mist: #fafaf8;
+  --color-mist-2: #f0efe9;
+  --color-mint: #daf5ee;
+  --color-mint-2: #b8eadd;
+  --color-aqua: #00a4a4;
+  --color-sun: #ffd64a;
+}
+
+html, body {
+  background: var(--color-mist);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body { max-width: 100vw; }
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.025em;
+}
+
+.display-tight {
+  letter-spacing: -0.04em;
+}
+
+/* Mesh gradient hero background */
+.mesh-bg {
+  background-color: var(--color-ink);
+  background-image:
+    radial-gradient(at 18% 22%, rgba(255, 77, 54, 0.32) 0px, transparent 50%),
+    radial-gradient(at 80% 12%, rgba(0, 164, 164, 0.28) 0px, transparent 45%),
+    radial-gradient(at 65% 85%, rgba(255, 214, 74, 0.18) 0px, transparent 40%),
+    radial-gradient(at 10% 90%, rgba(20, 34, 53, 0.9) 0px, transparent 50%);
+}
+
+.mesh-soft {
+  background-color: var(--color-mist);
+  background-image:
+    radial-gradient(at 0% 0%, rgba(255, 77, 54, 0.08) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(0, 164, 164, 0.10) 0px, transparent 45%);
+}
+
+/* Subtle dotted grid */
+.dot-grid {
+  background-image: radial-gradient(rgba(12, 22, 35, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 250ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 250ms;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 48px -28px rgba(12, 22, 35, 0.35);
+}
+
+/* Soft glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.glass-dark {
+  background: rgba(20, 34, 53, 0.55);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Soft tag chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Accent gradient stripe */
+.stripe-coral {
+  background: linear-gradient(90deg, var(--color-coral) 0%, var(--color-coral-hi) 50%, var(--color-sun) 100%);
+}
+
+/* Marquee — kept but slowed */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 60s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; }
+}
+
+::selection {
+  background: var(--color-coral);
+  color: var(--color-mist);
+}
+
+/* Hand-style highlight under text */
+.hl-coral {
+  background-image: linear-gradient(transparent 60%, rgba(255, 77, 54, 0.25) 60%);
+}
+
+/* Big bento radius */
+.r-3xl { border-radius: 1.75rem; }
+.r-4xl { border-radius: 2.25rem; }
+
+/* No-op kept for compatibility */
+.noise { position: relative; }
