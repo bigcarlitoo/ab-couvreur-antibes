@@ -346,7 +346,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
                     {services.length} services · classés A-Z
                   </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
+                <div className="sm:columns-2 sm:gap-8">
                   {serviceCategories.map((cat) => {
                     const items = cat.serviceIds
                       .map((id) => services.find((s) => s.id === id))
@@ -354,7 +354,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
                       .sort((a, b) => a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' }));
                     if (!items.length) return null;
                     return (
-                      <div key={cat.id}>
+                      <div key={cat.id} className="break-inside-avoid mb-8">
                         <div className="flex items-baseline justify-between gap-2 mb-2 pb-2 border-b border-[var(--color-coral)]/40">
                           <h3 className="font-display font-semibold text-base text-[var(--color-coral-hi)]">{cat.label}</h3>
                           <span className="text-[10px] text-[var(--color-mist)]/40 font-mono shrink-0">{items.length}</span>
