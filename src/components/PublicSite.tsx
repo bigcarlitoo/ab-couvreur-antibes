@@ -9,6 +9,7 @@ import {
   Quote, Plus, Minus,
 } from 'lucide-react';
 import { Service, Zone, Realisation, Testimonial, FaqItem, SiteSettings } from '../types';
+import { serviceCategories } from '../data';
 import { IconRenderer } from './IconRenderer';
 
 interface PublicSiteProps {
@@ -339,18 +340,44 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
               </div>
 
               <div className="lg:col-span-8">
-                <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-coral-hi)] mb-3 font-semibold">Prestations</div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
-                  {services.map((s) => (
-                    <button
-                      key={s.id}
-                      onClick={() => openService(s)}
-                      className="text-left py-2.5 border-b border-[var(--color-mist)]/10 hover:border-[var(--color-coral)] flex items-center justify-between group"
-                    >
-                      <span className="font-display text-base group-hover:text-[var(--color-coral-hi)] transition-colors">{s.title}</span>
-                      <ArrowUpRight size={14} className="text-[var(--color-mist)]/40 group-hover:text-[var(--color-coral-hi)]" />
-                    </button>
-                  ))}
+                <div className="flex items-baseline justify-between mb-4">
+                  <div className="text-xs uppercase tracking-[0.2em] text-[var(--color-coral-hi)] font-semibold">Prestations</div>
+                  <div className="text-[10px] uppercase tracking-widest text-[var(--color-mist)]/45">
+                    {services.length} services · classés A-Z
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
+                  {serviceCategories.map((cat) => {
+                    const items = cat.serviceIds
+                      .map((id) => services.find((s) => s.id === id))
+                      .filter((s): s is Service => Boolean(s))
+                      .sort((a, b) => a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' }));
+                    if (!items.length) return null;
+                    return (
+                      <div key={cat.id}>
+                        <div className="flex items-baseline justify-between gap-2 mb-2 pb-2 border-b border-[var(--color-coral)]/40">
+                          <h3 className="font-display font-semibold text-base text-[var(--color-coral-hi)]">{cat.label}</h3>
+                          <span className="text-[10px] text-[var(--color-mist)]/40 font-mono shrink-0">{items.length}</span>
+                        </div>
+                        <p className="text-xs text-[var(--color-mist)]/55 mb-2 leading-relaxed">{cat.description}</p>
+                        <ul className="space-y-0.5">
+                          {items.map((s) => (
+                            <li key={s.id}>
+                              <button
+                                onClick={() => openService(s)}
+                                className="w-full text-left py-2 flex items-center justify-between gap-3 group border-b border-transparent hover:border-[var(--color-mist)]/15 transition-colors"
+                              >
+                                <span className="font-display text-[15px] leading-snug group-hover:text-[var(--color-coral-hi)] transition-colors">
+                                  {s.title}
+                                </span>
+                                <ArrowUpRight size={13} className="text-[var(--color-mist)]/30 group-hover:text-[var(--color-coral-hi)] shrink-0" />
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="mt-10 pt-8 border-t border-[var(--color-mist)]/10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
@@ -1409,7 +1436,18 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
                     <div>
                       <label className="block text-xs uppercase tracking-widest text-[var(--color-coral)] mb-2 font-semibold">Prestation</label>
                       <select value={quoteForm.service} onChange={(e) => setQuoteForm({ ...quoteForm, service: e.target.value })} className="w-full bg-[var(--color-mist)] border border-[var(--color-ink)]/10 rounded-xl px-4 py-3 font-display text-[var(--color-ink)] focus:border-[var(--color-coral)] focus:outline-none">
-                        {services.map((s) => <option key={s.id} value={s.id}>{s.title}</option>)}
+                        {serviceCategories.map((cat) => {
+                          const items = cat.serviceIds
+                            .map((id) => services.find((s) => s.id === id))
+                            .filter((s): s is Service => Boolean(s))
+                            .sort((a, b) => a.title.localeCompare(b.title, 'fr', { sensitivity: 'base' }));
+                          if (!items.length) return null;
+                          return (
+                            <optgroup key={cat.id} label={cat.label}>
+                              {items.map((s) => <option key={s.id} value={s.id}>{s.title}</option>)}
+                            </optgroup>
+                          );
+                        })}
                       </select>
                     </div>
                   </div>

@@ -1,5 +1,60 @@
 import { Service, Zone, Realisation, Testimonial, FaqItem, SiteSettings } from './types';
 
+export interface ServiceCategory {
+  id: string;
+  label: string;
+  description: string;
+  serviceIds: string[];
+}
+
+export const serviceCategories: ServiceCategory[] = [
+  {
+    id: "couverture",
+    label: "Couverture & rénovation",
+    description: "Pose et rénovation de toiture, charpente, tuiles, ardoises et bac acier.",
+    serviceIds: [
+      "ardoise-artificielle",
+      "ardoise-naturelle",
+      "bac-acier",
+      "bac-acier-isole",
+      "charpente",
+      "toiture",
+      "tuiles-mecaniques",
+      "tuiles-plates",
+    ],
+  },
+  {
+    id: "urgence",
+    label: "Urgence & dépannage",
+    description: "Réponse rapide après tempête, fuite ou sinistre.",
+    serviceIds: ["bachage-toiture", "mise-en-securite-toiture", "recherche-fuite"],
+  },
+  {
+    id: "entretien",
+    label: "Entretien & traitement",
+    description: "Nettoyage, hydrofuge et ravalement pour prolonger la vie du bâti.",
+    serviceIds: ["hydrofuge-toiture", "nettoyage-toiture", "ravalement-facade"],
+  },
+  {
+    id: "zinguerie",
+    label: "Zinguerie & évacuation",
+    description: "Étanchéité des points sensibles et écoulement des eaux pluviales.",
+    serviceIds: ["etancheite-toiture", "gouttieres", "zinguerie"],
+  },
+  {
+    id: "isolation",
+    label: "Isolation",
+    description: "Confort thermique été comme hiver, depuis les combles jusqu'à la toiture.",
+    serviceIds: ["isolation-toiture", "laine-de-roche", "laine-de-verre", "sarking"],
+  },
+  {
+    id: "velux",
+    label: "Velux & fenêtres de toit",
+    description: "Apport de lumière naturelle et ventilation des combles.",
+    serviceIds: ["velux", "velux-electrique", "velux-rotation", "velux-solaire"],
+  },
+];
+
 export const defaultSiteSettings: SiteSettings = {
   businessName: "AB Couvreur — Antibes & Côte d'Azur",
   phone: "07 77 39 30 18",
