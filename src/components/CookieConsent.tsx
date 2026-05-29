@@ -126,9 +126,13 @@ export const CookieConsent: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-4 left-4 right-4 sm:right-auto sm:bottom-6 sm:left-6 z-[81] max-w-md"
+            className={
+              settings
+                ? 'fixed inset-x-4 top-4 bottom-4 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-[81] w-auto sm:w-[440px] sm:max-w-[calc(100vw-2rem)] sm:max-h-[calc(100vh-3rem)] flex'
+                : 'fixed bottom-4 left-4 right-4 sm:right-auto sm:bottom-6 sm:left-6 z-[81] max-w-md'
+            }
           >
-            <div className="bg-[var(--color-mist)] rounded-2xl shadow-[0_24px_60px_-20px_rgba(12,22,35,0.45)] border border-[var(--color-ink)]/10 overflow-hidden">
+            <div className={`bg-[var(--color-mist)] rounded-2xl shadow-[0_24px_60px_-20px_rgba(12,22,35,0.45)] border border-[var(--color-ink)]/10 overflow-hidden flex flex-col ${settings ? 'w-full max-h-full' : ''}`}>
               {!settings ? (
                 <div className="p-5 sm:p-6">
                   <div className="flex items-start gap-3 mb-4">
@@ -166,8 +170,8 @@ export const CookieConsent: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <div className="p-5 sm:p-6">
-                  <div className="flex items-start justify-between gap-3 mb-5">
+                <div className="flex flex-col flex-1 min-h-0">
+                  <div className="flex items-start justify-between gap-3 p-5 sm:p-6 pb-3 border-b border-[var(--color-ink)]/8 shrink-0">
                     <div>
                       <div className="font-display font-bold text-lg text-[var(--color-ink)]">Préférences cookies</div>
                       <div className="text-xs text-[var(--color-ink)]/55 mt-0.5">Activez seulement ce que vous souhaitez.</div>
@@ -175,13 +179,13 @@ export const CookieConsent: React.FC = () => {
                     <button
                       onClick={() => setOpen(false)}
                       aria-label="Fermer"
-                      className="w-9 h-9 rounded-xl bg-[var(--color-mist-2)] hover:bg-[var(--color-ink)]/10 flex items-center justify-center text-[var(--color-ink)]/60"
+                      className="w-9 h-9 rounded-xl bg-[var(--color-mist-2)] hover:bg-[var(--color-ink)]/10 flex items-center justify-center text-[var(--color-ink)]/60 shrink-0"
                     >
                       <X size={16} />
                     </button>
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="overflow-y-auto p-5 sm:p-6 space-y-3 flex-1 min-h-0">
                     <div className="bg-[var(--color-mist-2)] rounded-xl p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-3">
@@ -243,7 +247,8 @@ export const CookieConsent: React.FC = () => {
                     </button>
                   </div>
 
-                  <div className="mt-5 flex flex-col sm:flex-row gap-2">
+                  </div>
+                  <div className="border-t border-[var(--color-ink)]/8 bg-[var(--color-mist)] p-5 sm:p-6 shrink-0 flex flex-col gap-2 sm:flex-row">
                     <button
                       onClick={() => persist(heatmap)}
                       className="flex-1 inline-flex items-center justify-center gap-2 bg-[var(--color-ink)] hover:bg-[var(--color-coral)] text-[var(--color-mist)] px-4 py-3 rounded-xl font-medium text-sm transition-colors"
@@ -256,10 +261,10 @@ export const CookieConsent: React.FC = () => {
                     >
                       Tout accepter
                     </button>
+                    <p className="sm:basis-full text-[11px] text-[var(--color-ink)]/45 text-center sm:text-left">
+                      Vous pouvez modifier vos préférences à tout moment depuis le pied de page.
+                    </p>
                   </div>
-                  <p className="mt-3 text-[11px] text-[var(--color-ink)]/45">
-                    Vous pouvez modifier vos préférences à tout moment depuis le pied de page.
-                  </p>
                 </div>
               )}
             </div>
