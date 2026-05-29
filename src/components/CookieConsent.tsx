@@ -246,8 +246,6 @@ export const CookieConsent: React.FC = () => {
                       </div>
                     </button>
                   </div>
-
-                  </div>
                   <div className="border-t border-[var(--color-ink)]/8 bg-[var(--color-mist)] p-5 sm:p-6 shrink-0 flex flex-col gap-2 sm:flex-row">
                     <button
                       onClick={() => persist(heatmap)}
