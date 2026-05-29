@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | AB Couvreur Antibes",
   },
   description:
-    "Artisan couvreur à Antibes, Cannes & Nice : rénovation de toiture, recherche de fuite, Velux, zinguerie, nettoyage, hydrofuge et isolation. Diagnostic et devis gratuits, garantie décennale AXA.",
+    "Artisan couvreur à Antibes, Cannes & Nice : rénovation de toiture, recherche de fuite, Velux, zinguerie, nettoyage, hydrofuge et isolation. Diagnostic et devis gratuits, garantie décennale incluse.",
   keywords: [
     "couvreur Antibes",
     "couvreur Cannes",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "AB Couvreur Antibes",
     title: "AB Couvreur Antibes — Artisan couvreur Côte d'Azur",
     description:
-      "Couvreur à Antibes, Cannes & Nice. Rénovation, fuite, Velux, zinguerie, nettoyage, hydrofuge. Devis gratuit, décennale AXA.",
+      "Couvreur à Antibes, Cannes & Nice. Rénovation, fuite, Velux, zinguerie, nettoyage, hydrofuge. Devis gratuit, garantie décennale.",
     images: [
       {
         url: "/assets/ab-source/ab-13.webp",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AB Couvreur Antibes — Artisan couvreur Côte d'Azur",
     description:
-      "Couvreur à Antibes, Cannes & Nice. Devis gratuit, garantie décennale AXA.",
+      "Couvreur à Antibes, Cannes & Nice. Devis gratuit, garantie décennale.",
     images: ["/assets/ab-source/ab-13.webp"],
   },
   robots: {

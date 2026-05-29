@@ -173,9 +173,10 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
     priceRange: '€€',
     paymentAccepted: 'Espèces, Virement, Chèque',
     address: {
-      '@type': 'PostalAddress', streetAddress: 'Chemin de la Constance',
-      addressLocality: 'Antibes', postalCode: '06600',
-      addressRegion: 'Alpes-Maritimes', addressCountry: 'FR',
+      '@type': 'PostalAddress',
+      addressLocality: 'Antibes',
+      addressRegion: 'Alpes-Maritimes',
+      addressCountry: 'FR',
     },
     geo: { '@type': 'GeoCoordinates', latitude: '43.5804', longitude: '7.1251' },
     areaServed: zones.map((z) => ({ '@type': 'City', name: z.city })),
@@ -388,7 +389,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
               de votre <span className="text-[var(--color-coral-hi)]">toiture.</span>
             </h3>
             <p className="mt-5 text-[var(--color-mist)]/65 max-w-md">
-              Diagnostic et devis gratuits sous 24 h, garantie décennale AXA, intervention rapide d'Antibes à Nice.
+              Diagnostic et devis gratuits sous 24 h, garantie garantie décennale, intervention rapide d'Antibes à Nice.
             </p>
             <div className="mt-7 flex gap-3">
               <a href={`tel:${phoneClean}`} className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--color-coral)] hover:bg-[var(--color-coral-lo)] text-[var(--color-mist)] font-medium text-sm">
@@ -430,7 +431,9 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
                 <li><a href={`mailto:${settings.email}`} className="break-all hover:text-[var(--color-coral-hi)]">{settings.email}</a></li>
               )}
               <li className="text-xs text-[var(--color-mist)]/55">{settings.address}</li>
-              <li className="text-[10px] text-[var(--color-mist)]/40">SIRET {settings.siret}</li>
+              {settings.siret && (
+                <li className="text-[10px] text-[var(--color-mist)]/40">SIRET {settings.siret}</li>
+              )}
             </ul>
           </div>
         </div>
@@ -474,7 +477,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
               <p className="mt-7 max-w-xl text-base sm:text-lg text-[var(--color-mist)]/75 leading-relaxed">
                 Artisan couvreur installé à Antibes, intervention d'Antibes à Nice :
                 rénovation, recherche de fuite, Velux, zinguerie, nettoyage et isolation.
-                Décennale AXA, devis sous 24 h.
+                Garantie décennale, devis sous 24 h.
               </p>
 
               <div className="mt-9 flex flex-col sm:flex-row gap-3">
@@ -494,7 +497,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
 
               <div className="mt-12 flex flex-wrap gap-x-6 gap-y-3 text-xs">
                 {[
-                  { i: <ShieldCheck size={14} />, t: 'Décennale AXA' },
+                  { i: <ShieldCheck size={14} />, t: 'Garantie décennale' },
                   { i: <Clock size={14} />, t: 'Devis sous 24h' },
                   { i: <Award size={14} />, t: '15 ans d\'expérience' },
                   { i: <Star size={14} />, t: '5.0 / 5 clients' },
@@ -543,7 +546,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
               { n: '15+', l: "ans d'expérience" },
               { n: '06', l: "département" },
               { n: '24h', l: "réponse devis" },
-              { n: '10 ans', l: "décennale AXA" },
+              { n: '10 ans', l: "garantie décennale" },
             ].map((s) => (
               <div key={s.l} className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3 min-w-0">
                 <div className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl display-tight text-[var(--color-ink)] shrink-0">{s.n}</div>
@@ -661,7 +664,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
                   <div className="mt-8 pt-6 border-t border-[var(--color-mist)]/15 flex items-center justify-between gap-3">
                     <div>
                       <div className="text-xs uppercase tracking-widest text-[var(--color-coral-hi)] font-semibold">Engagement</div>
-                      <div className="font-display font-bold text-lg">Décennale AXA · NF · CE</div>
+                      <div className="font-display font-bold text-lg">Garantie décennale · NF · CE</div>
                     </div>
                     <ShieldCheck size={32} className="text-[var(--color-coral)] shrink-0" />
                   </div>
@@ -732,7 +735,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
               { n: '01', t: 'Diagnostic gratuit', d: "Visite sur place, inspection complète, photos des points faibles." },
               { n: '02', t: 'Devis détaillé', d: "Chiffrage transparent, matériaux nommés, délai annoncé." },
               { n: '03', t: 'Chantier soigné', d: "Protection des abords, communication quotidienne, photos d'étapes." },
-              { n: '04', t: 'Garantie & suivi', d: "Décennale AXA, attestation jointe au PV, suivi à 6 mois." },
+              { n: '04', t: 'Garantie & suivi', d: "Couverture décennale, attestation jointe au PV de fin de chantier, suivi à 6 mois." },
             ].map((step, i) => (
               <div key={step.n} className="relative bg-[var(--color-ink-2)]/70 backdrop-blur border border-[var(--color-mist)]/8 rounded-[1.5rem] p-6">
                 <div className="absolute -top-3 -left-3 w-12 h-12 rounded-2xl bg-[var(--color-coral)] flex items-center justify-center font-display font-bold text-lg shadow-lg">
@@ -1107,7 +1110,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
             {[
               { l: 'Tarif', v: service.priceEstimate || 'Sur devis' },
               { l: 'Durée', v: service.durationEstimate || 'Selon chantier' },
-              { l: 'Garantie', v: 'Décennale AXA' },
+              { l: 'Garantie', v: 'Décennale incluse' },
             ].map((b) => (
               <div key={b.l} className="bg-[var(--color-mist-2)] rounded-2xl p-6">
                 <div className="text-xs uppercase tracking-widest text-[var(--color-coral)] font-semibold">{b.l}</div>
@@ -1334,7 +1337,7 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
               <div className="bg-[var(--color-mist-2)] border border-[var(--color-ink)]/8 rounded-2xl p-5">
                 <div className="text-xs uppercase tracking-widest text-[var(--color-coral)] font-semibold mb-1">Adresse</div>
                 <div className="font-display font-semibold text-base text-[var(--color-ink)]">{settings.address}</div>
-                <div className="mt-2 text-xs text-[var(--color-ink)]/55">Siège — interventions sur l'ensemble du 06.</div>
+                <div className="mt-2 text-xs text-[var(--color-ink)]/55">Interventions dans tout le 06.</div>
               </div>
               <div className="bg-[var(--color-mist-2)] border border-[var(--color-ink)]/8 rounded-2xl p-5">
                 <div className="text-xs uppercase tracking-widest text-[var(--color-coral)] font-semibold mb-1">Horaires</div>

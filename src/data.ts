@@ -1,13 +1,13 @@
 import { Service, Zone, Realisation, Testimonial, FaqItem, SiteSettings } from './types';
 
 export const defaultSiteSettings: SiteSettings = {
-  businessName: "AB Couvreur Antibes — Côte d'Azur",
-  phone: "06 45 78 21 09",
+  businessName: "AB Couvreur — Antibes & Côte d'Azur",
+  phone: "07 77 39 30 18",
   email: "",
-  address: "Chemin de la Constance, 06600 Antibes",
+  address: "Antibes, Alpes-Maritimes (06)",
   chaletAddress: "Antibes, Alpes-Maritimes (06)",
-  siret: "843 921 004 00021",
-  decennale: "Garantie décennale AXA Assurances n°8491029-A",
+  siret: "",
+  decennale: "Garantie décennale incluse",
   yearsExperience: 15,
 };
 
@@ -29,7 +29,7 @@ const sharedFaqs = (label: string) => [
   },
   {
     question: "Êtes-vous assurés en garantie décennale ?",
-    answer: "Oui. Nos travaux de couverture, zinguerie, étanchéité et isolation sont couverts par notre garantie décennale AXA Assurances. L'attestation est remise sur simple demande avec le devis.",
+    answer: "Oui. Nos travaux de couverture, zinguerie, étanchéité et isolation bénéficient d'une garantie décennale. L'attestation d'assurance est remise sur simple demande avec le devis.",
   },
 ];
 
@@ -473,7 +473,7 @@ export const defaultZones: Zone[] = [
     h1: "Couvreur à Antibes et Juan-les-Pins",
     seoTitle: "Couvreur à Antibes et Juan-les-Pins | AB Couvreur Alpes-Maritimes",
     seoDescription:
-      "Couvreur à Antibes & Juan-les-Pins : réparation de toiture, fuite, Velux, zinguerie, nettoyage et rénovation. Devis gratuit au 06 45 78 21 09.",
+      "Couvreur à Antibes & Juan-les-Pins : réparation de toiture, fuite, Velux, zinguerie, nettoyage et rénovation. Devis gratuit au 07 77 39 30 18.",
     keyServices: ["recherche-fuite", "toiture", "nettoyage-toiture", "zinguerie", "velux", "bachage-toiture"],
   },
   {
@@ -487,7 +487,7 @@ export const defaultZones: Zone[] = [
     h1: "Couvreur à Cannes et Le Cannet",
     seoTitle: "Couvreur à Cannes et Le Cannet | AB Couvreur Alpes-Maritimes",
     seoDescription:
-      "Couvreur à Cannes & Le Cannet : réparation, fuite, Velux, zinguerie, nettoyage et rénovation. Devis gratuit AB Couvreur 06 45 78 21 09.",
+      "Couvreur à Cannes & Le Cannet : réparation, fuite, Velux, zinguerie, nettoyage et rénovation. Devis gratuit AB Couvreur 07 77 39 30 18.",
     keyServices: ["recherche-fuite", "toiture", "nettoyage-toiture", "zinguerie", "velux", "bachage-toiture"],
   },
   {
@@ -693,7 +693,7 @@ export const defaultFaqs: FaqItem[] = [
     id: "faq-5",
     question: "Êtes-vous assurés en garantie décennale ?",
     answer:
-      "Oui. Tous nos travaux de couverture, zinguerie, étanchéité et isolation sont couverts par notre garantie décennale AXA Assurances. L'attestation est jointe systématiquement au devis sur demande.",
+      "Oui. Tous nos travaux de couverture, zinguerie, étanchéité et isolation bénéficient d'une garantie décennale. L'attestation d'assurance peut être jointe au devis sur simple demande.",
     category: "Garanties",
   },
   {
