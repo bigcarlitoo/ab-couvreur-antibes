@@ -239,10 +239,11 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
               </div>
               <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-[var(--color-coral)] ring-2 ring-[var(--color-mist)]" />
             </div>
-            <div className="text-left leading-tight">
-              <div className="font-display font-bold text-base text-[var(--color-ink)]">AB Couvreur</div>
-              <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--color-ink)]/55 font-semibold">
-                Antibes · Côte d'Azur
+            <div className="text-left leading-tight min-w-0">
+              <div className="font-display font-bold text-base text-[var(--color-ink)] whitespace-nowrap">AB Couvreur</div>
+              <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.18em] text-[var(--color-ink)]/55 font-semibold whitespace-nowrap">
+                <span className="sm:hidden">Antibes · 06</span>
+                <span className="hidden sm:inline">Antibes · Côte d'Azur</span>
               </div>
             </div>
           </button>
@@ -625,19 +626,19 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
           </div>
 
           {/* Secondary services grid */}
-          <div className="mt-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {services.slice(5, 13).map((s) => (
               <button
                 key={s.id}
                 onClick={() => openService(s)}
-                className="group bg-[var(--color-mist)] border border-[var(--color-ink)]/8 hover:border-[var(--color-coral)] hover:bg-[var(--color-coral)]/5 rounded-2xl p-4 text-left transition-colors flex items-start gap-3"
+                className="group bg-[var(--color-mist)] border border-[var(--color-ink)]/8 hover:border-[var(--color-coral)] hover:bg-[var(--color-coral)]/5 rounded-2xl p-4 text-left transition-colors flex items-start gap-3 min-w-0"
               >
                 <div className="w-9 h-9 rounded-lg bg-[var(--color-mint)] text-[var(--color-aqua)] group-hover:bg-[var(--color-coral)] group-hover:text-[var(--color-mist)] flex items-center justify-center transition-colors shrink-0">
                   <IconRenderer name={s.icon} size={14} />
                 </div>
-                <div className="min-w-0">
-                  <div className="font-display font-semibold text-sm text-[var(--color-ink)] truncate">{s.title}</div>
-                  <div className="text-[11px] text-[var(--color-ink)]/55 line-clamp-1">{s.priceEstimate}</div>
+                <div className="min-w-0 flex-1">
+                  <div className="font-display font-semibold text-sm text-[var(--color-ink)] leading-snug break-words">{s.title}</div>
+                  <div className="text-[11px] text-[var(--color-ink)]/55 mt-1 leading-snug">{s.priceEstimate}</div>
                 </div>
               </button>
             ))}
@@ -977,8 +978,8 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
                         {t.author.split(' ').map((p) => p[0]).join('').slice(0, 2)}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="font-display font-semibold text-sm truncate">{t.author}</div>
-                        <div className={`text-xs ${dark ? 'text-[var(--color-mist)]/65' : 'text-[var(--color-ink)]/55'}`}>
+                        <div className="font-display font-semibold text-sm break-words">{t.author}</div>
+                        <div className={`text-xs ${dark ? 'text-[var(--color-mist)]/65' : 'text-[var(--color-ink)]/55'} break-words leading-snug`}>
                           <MapPin size={10} className="inline mr-1" />
                           {t.city} · {t.service}
                         </div>
@@ -1149,21 +1150,22 @@ export const PublicSite: React.FC<PublicSiteProps> = ({
                   </p>
                 </div>
                 <div className="lg:col-span-7">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {zones.map((z) => (
                       <button
                         key={z.id}
                         onClick={() => openZone(z)}
-                        className="group flex items-center justify-between bg-[var(--color-mist)]/8 hover:bg-[var(--color-coral)] border border-[var(--color-mist)]/12 rounded-xl px-3.5 py-2.5 text-left text-sm transition-colors"
+                        className="group flex items-center justify-between gap-2 bg-[var(--color-mist)]/8 hover:bg-[var(--color-coral)] border border-[var(--color-mist)]/12 rounded-xl px-3.5 py-2.5 text-left text-sm transition-colors min-w-0"
                       >
-                        <span className="font-display font-medium truncate">{service.title.split(' ')[0]} à {z.city.split(' ')[0]}</span>
+                        <span className="font-display font-medium leading-snug break-words flex-1 min-w-0">{z.city}</span>
                         <ArrowUpRight size={12} className="opacity-50 group-hover:opacity-100 shrink-0" />
                       </button>
                     ))}
                   </div>
-                  <div className="mt-3 text-[10px] uppercase tracking-wider text-[var(--color-mist)]/50">
-                    Antibes · Juan-les-Pins · Cap d'Antibes · Cannes · Le Cannet · Nice · Biot · Vallauris · Mougins · Valbonne · Sophia Antipolis · Cagnes-sur-Mer · Saint-Laurent-du-Var
-                  </div>
+                  <p className="mt-4 text-xs text-[var(--color-mist)]/55 leading-relaxed">
+                    Également Cap d'Antibes, Sophia Antipolis, Cagnes-sur-Mer, Saint-Laurent-du-Var, Villeneuve-Loubet
+                    et toutes les communes alentours dans les Alpes-Maritimes.
+                  </p>
                 </div>
               </div>
             </div>
